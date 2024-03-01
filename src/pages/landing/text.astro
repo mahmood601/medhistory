@@ -1,0 +1,51 @@
+---
+---
+
+<div class="h-[180px] my-6 box-border">
+  <p
+    dir="rtl"
+    id="landing-text"
+    class="h-[180px] w-[185px] text-3xl font-sans font-bold text-center leading-loose"
+  >
+    <span id="span" dir="ltr" class="text-brown"></span>
+    <span
+      class="inline-flex h-6 w-[2px] bg-brown animate-[blink-caret_1s_step-end_infinite]"
+    ></span>
+  </p>
+</div>
+
+<style>
+  @keyframes blink-caret {
+    from,
+    to {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  let length = 0;
+  const text = `تعلم تاريخ الطب مع Medhistory.`;
+  const writingSpeed = 100;
+  const span = document.getElementById("span");
+
+  function writer() {
+    if (length < text.length) {
+      if (length > 18) {
+        span.append(text[length]);
+        length++;
+      } else {
+        span.before(text[length]);
+        length++;
+      }
+    }
+    let counter = setTimeout(writer, writingSpeed);
+    if (length > text.length) {
+      clearTimeout(counter);
+    }
+  }
+  writer();
+</script>

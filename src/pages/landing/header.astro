@@ -1,0 +1,40 @@
+---
+import { Image } from "astro:assets";
+---
+
+<header
+  class="flex z-30 sticky top-0 px-4 py-3 justify-between items-center bg-white"
+>
+  <Image
+    class="aspect-square mt-1"
+    loading="eager"
+    src="/Logo.jpg"
+    alt="Logo"
+    height={50}
+    width={50}
+  />
+  <nav>
+    <ul class="h-5 flex flex-col justify-between">
+      <span class="burger"></span>
+      <span class="burger"></span>
+      <span class="burger"></span>
+    </ul>
+    <ul class="links" style="display: none;">
+      <li><a href="#"></a></li>
+      <li><a href="#"></a></li>
+      <li><a href="#"></a></li>
+    </ul>
+  </nav>
+</header>
+
+
+<style>
+  @tailwind components;
+    @layer components {
+    .burger {
+      @apply w-6 bg-black h-[2px] block;
+    }
+  }
+
+
+</style>

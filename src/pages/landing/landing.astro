@@ -1,0 +1,136 @@
+---
+import { Image } from "astro:assets";
+
+import Header from "./header.astro";
+import Text from "./text.astro";
+import Circle from "./circle.astro";
+import FeatBox from "./feat-box.astro";
+
+import automation from "./images/automation-4p-svgrepo-com.svg";
+import stroy from "./images/book-svgrepo-com.svg";
+import theme from "./images/theme-store-svgrepo-com.svg";
+import collaboration from "./images/collaboration-distributed.svg";
+import ranking from "./images/ranking-svgrepo-com.svg";
+import link from "./images/chain-for-links-svgrepo-com.svg";
+---
+
+<div>
+  <Header />
+  <div class="landing relative px-4 flex items-center flex-col bg-gray-100">
+    <Text />
+    <div
+      class="w-full flex justify-around top-7 left-1/2 relative -translate-x-1/2 -translate-y-1/2"
+    >
+      <button type="button" class="btn bg-white">تسجيل الدخول</button>
+      <button type="button" class="btn bg-brown text-gray-100"
+        >إنشاء حساب</button
+      >
+    </div>
+    <div
+      class="w-full h-dvh mt-10 flex justify-center items-center overflow-hidden"
+    >
+      <Circle />
+    </div>
+  </div>
+
+  <div class="flex items-end flex-col w-full my-10 px-4">
+    <FeatBox color="#000">
+      <Image
+        class="aspect-square feat-image p-2 size-12"
+        src={theme}
+        alt="Theme image"
+        height={48}
+        width={48}
+      />
+      <h2 class="my-3 font-extrabold text-xl">تغيير الثيم</h2>
+      <p dir="rtl" class="text-right">
+        بإمكانك بسهولة التبديل بين الوضع المضيء والمظلم.
+      </p>
+    </FeatBox>
+
+    <FeatBox color="#000">
+      <Image
+        class="aspect-square feat-image p-2 size-12"
+        src={stroy}
+        alt="Story image"
+        height={48}
+        width={48}
+      />
+      <h2 class="my-3 font-extrabold text-xl">قصص</h2>
+      <p dir="rtl" class="text-right">قصص مبتكؤة لتسهيل حفظ الفقرات.</p>
+    </FeatBox>
+
+    <FeatBox color="#000">
+      <Image
+        class="aspect-square feat-image p-2 size-12"
+        src={automation}
+        alt="Automation image"
+        height={48}
+        width={48}
+      />
+      <h2 class="my-3 font-extrabold text-xl">أسئلة مؤتمتة</h2>
+      <p dir="rtl" class="text-right">
+        مجموعة من الاختبارات المؤتمتة للتأكد من الفهم.
+      </p>
+    </FeatBox>
+
+    <FeatBox color="#000">
+      <Image
+        class="aspect-square feat-image p-2 size-12"
+        src={ranking}
+        alt="Ranking image"
+        height={48}
+        width={48}
+      />
+      <h2 class="my-3 font-extrabold text-xl">الحصول على ترتيب</h2>
+      <p dir="rtl" class="text-right">
+        تنافس مع زملائك للحصول على المرتبة الأولى.
+      </p>
+    </FeatBox>
+
+    <FeatBox color="#000">
+      <Image
+        class="aspect-square feat-image p-2 size-12"
+        src={collaboration}
+        alt="Collaboration image"
+        height={48}
+        width={48}
+      />
+      <h2 class="my-3 font-extrabold text-xl">المساهمة</h2>
+      <p dir="rtl" class="text-right">
+        ساهم بإضافة قصتك الخاصة أو مساهمتك بعد الحصول ع تصويت.
+      </p>
+    </FeatBox>
+
+    <FeatBox color="#000">
+      <Image
+        class="aspect-square feat-image p-2 size-12"
+        src={link}
+        alt="Link image"
+        height={48}
+        width={48}
+      />
+      <h2 class="my-3 font-extrabold text-xl">روابط التوسع</h2>
+      <p dir="rtl" class="text-right">
+        روابط خارجية لشرح الكلمات المبهمة أو فيديوهات توفر شرحاً للفكرة.
+      </p>
+    </FeatBox>
+  </div>
+</div>
+
+<style>
+  @tailwind components;
+
+  @layer components {
+    .btn {
+      @apply p-3 rounded-full shadow-md shadow-gray-300;
+    }
+    .feat-image {
+      @apply rounded-md bg-gray-300;
+    }
+  }
+
+  .landing {
+    height: calc(100vh - 80px);
+  }
+</style>

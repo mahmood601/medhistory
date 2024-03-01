@@ -1,0 +1,28 @@
+---
+import Image from "./image.astro"
+import firstImage from "./images/IMG_20240228_213908_238.jpg";
+import secondImage from "./images/IMG_20240228_213914_405.jpg";
+import thirdImage from "./images/IMG_20240228_213920_203.jpg";
+import fourthImage from "./images/IMG_20240228_213942_107.jpg";
+---
+
+<div
+  class="border-brown border-4 border-solid grid grid-cols-2 grid-rows-2 gap-14 size-64 relative bottom-[-50%] rounded-full animate-[rotationOne_6s_infinite_linear]"
+>
+  <Image
+    src={firstImage}
+    alt="firstImage"
+  />
+  <Image
+    src={secondImage}
+    alt="secondImage"
+  />
+  <Image
+    src={thirdImage}
+    alt="thirdImage"
+ />
+  <Image
+    src={fourthImage}
+    alt="fourthImage"
+ />
+</div>

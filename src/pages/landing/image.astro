@@ -1,0 +1,41 @@
+---
+import { Image } from "astro:assets";
+const { classes, src, alt } = Astro.props;
+---
+
+<Image
+  class={classes + "relative img animate-[rotationTwo_6s_infinite_linear]"}
+  src={src}
+  height={100}
+  width={100}
+  quality="high"
+  loading="eager"
+  alt={alt}
+/>
+
+<style>
+  @tailwind components;
+
+  @layer components {
+    .img {
+      @apply aspect-square rounded-md;
+    }
+  }
+  @keyframes rotationOne {
+    from {
+      transform: rotateZ(0deg);
+    }
+    to {
+      transform: rotateZ(360deg);
+    }
+  }
+
+  @keyframes rotationTwo {
+    from {
+      transform: rotateZ(360deg);
+    }
+    to {
+      transform: rotateZ(0deg);
+    }
+  }
+</style>
