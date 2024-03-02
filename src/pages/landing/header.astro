@@ -14,27 +14,73 @@ import { Image } from "astro:assets";
     width={50}
   />
   <nav>
-    <ul class="h-5 flex flex-col justify-between">
+    <ul id="burger-menu" class="h-5 flex flex-col justify-between items-end">
       <span class="burger"></span>
       <span class="burger"></span>
       <span class="burger"></span>
-    </ul>
-    <ul class="links" style="display: none;">
-      <li><a href="#"></a></li>
-      <li><a href="#"></a></li>
-      <li><a href="#"></a></li>
+      <ul
+        dir="rtl"
+        class="links absolute right-4 shadow-gray-400 shadow-md bg-white rounded-md p-4 w-44 transition-all duration-200"
+      >
+        <li><a href="#features">الميزات</a></li>
+        <li><a href="#about">من نحن</a></li>
+        <li><a href="#contact">معلومات التواصل</a></li>
+      </ul>
     </ul>
   </nav>
 </header>
 
-
 <style>
   @tailwind components;
-    @layer components {
+  @layer components {
     .burger {
-      @apply w-6 bg-black h-[2px] block;
+      @apply w-6 bg-black h-[2px] block transition-all duration-200;
     }
   }
+  .open span:nth-child(2) {
+    @apply w-4;
+  }
+  .open span:nth-child(3) {
+    @apply w-2;
+  }
 
+  .links {
+    top: calc(100% + 16px);
+    transform: translateX(calc(-100vw - 10px));
+  }
 
+  .links li {
+    padding: 7px;
+    @apply rounded-md;
+  }
+  .links li:hover {
+    @apply bg-gray-100;
+  }
+
+  .links::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    right: 3px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent white transparent;
+    width: 0;
+    height: 0;
+  }
+
+  .open .links {
+    transform: translate(0);
+  }
 </style>
+
+<script>
+  const menu = document.getElementById("burger-menu");
+  menu.addEventListener("click", (e) => {
+    e.stopPropagation();
+    menu.classList.toggle("open");
+  });
+  document.addEventListener("click", () => {
+    menu.classList.remove("open");
+  });
+</script>

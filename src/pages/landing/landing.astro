@@ -5,6 +5,8 @@ import Header from "./header.astro";
 import Text from "./text.astro";
 import Circle from "./circle.astro";
 import FeatBox from "./feat-box.astro";
+import About from "./about.astro";
+import Footer from "./footer.astro";
 
 import automation from "./images/automation-4p-svgrepo-com.svg";
 import stroy from "./images/book-svgrepo-com.svg";
@@ -33,7 +35,7 @@ import link from "./images/chain-for-links-svgrepo-com.svg";
     </div>
   </div>
 
-  <div class="flex items-end flex-col w-full my-10 px-4">
+  <div id="features" class="flex items-end flex-col w-full my-10 px-4">
     <FeatBox color="#000">
       <Image
         class="aspect-square feat-image p-2 size-12"
@@ -57,7 +59,7 @@ import link from "./images/chain-for-links-svgrepo-com.svg";
         width={48}
       />
       <h2 class="my-3 font-extrabold text-xl">قصص</h2>
-      <p dir="rtl" class="text-right">قصص مبتكؤة لتسهيل حفظ الفقرات.</p>
+      <p dir="rtl" class="text-right">قصص مبتكرة لتسهيل حفظ الفقرات.</p>
     </FeatBox>
 
     <FeatBox color="#000">
@@ -98,7 +100,7 @@ import link from "./images/chain-for-links-svgrepo-com.svg";
       />
       <h2 class="my-3 font-extrabold text-xl">المساهمة</h2>
       <p dir="rtl" class="text-right">
-        ساهم بإضافة قصتك الخاصة أو مساهمتك بعد الحصول ع تصويت.
+        ساهم بإضافة قصتك الخاصة أو مساهمتك بعد الحصول على تصويت.
       </p>
     </FeatBox>
 
@@ -116,6 +118,8 @@ import link from "./images/chain-for-links-svgrepo-com.svg";
       </p>
     </FeatBox>
   </div>
+  <About />
+  <Footer />
 </div>
 
 <style>
