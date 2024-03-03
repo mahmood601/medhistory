@@ -42,7 +42,6 @@ to {
   boxes.forEach((box) => {
     document.addEventListener("scroll", (e: any) => {
       if (window.innerHeight - 100 >= box.getBoundingClientRect().top) {
-        console.log(1)
         box.parentElement.style.transform = "translate(0)"
         box.parentElement.classList.add("box")
       }
