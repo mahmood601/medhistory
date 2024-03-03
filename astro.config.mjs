@@ -81,7 +81,7 @@ export default defineConfig({
     tailwind({}),
     icon({
       include: {
-        mdi: ["facebook", "instagram", "whatsapp", "telegram", "github"],
+        mdi: ["facebook", "instagram", "whatsapp", "telegram", "github", "heart"],
       },
     }),
   ],
