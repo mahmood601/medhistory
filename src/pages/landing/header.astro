@@ -18,14 +18,14 @@ import { Image } from "astro:assets";
       <li class="burger"></li>
       <li class="burger"></li>
       <li class="burger"></li>
-      <ul
-        dir="rtl"
-        class="links absolute right-4 shadow-gray-400 shadow-md bg-white rounded-md p-4 w-44 transition-all duration-200"
+
+      <li
+        class="links absolute right-4 shadow-gray-400 shadow-md bg-white rounded-md p-4 w-44 transition-all duration-200 flex flex-col"
       >
-        <li><a href="#features">الميزات</a></li>
-        <li><a href="#about">من نحن</a></li>
-        <li><a href="#contact">معلومات التواصل</a></li>
-      </ul>
+        <a href="#features">الميزات</a>
+        <a href="#about">من نحن</a>
+        <a href="#contact">معلومات التواصل</a>
+      </li>
     </ul>
   </nav>
 </header>
@@ -49,11 +49,11 @@ import { Image } from "astro:assets";
     transform: translateX(calc(-100vw - 10px));
   }
 
-  .links li {
+  .links a {
     padding: 7px;
-    @apply rounded-md;
+    @apply rounded-md w-full text-right;
   }
-  .links li:hover {
+  .links a:hover {
     @apply bg-gray-100;
   }
 
