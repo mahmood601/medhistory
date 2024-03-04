@@ -17,8 +17,9 @@ import Landing from "./landing/landing.astro";
       content="fdU0e2jeJpGl-jOjNIsdQrMk_6DLEAiUg8vEFekRvlA"
     />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="icon" href="/favicon.ico" />
   </head>
   <body>
-    <Landing />
+    {false? (<Landing />) : ""}
   </body>
 </html>

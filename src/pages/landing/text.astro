@@ -35,10 +35,10 @@
   function writer() {
     if (length < text.length) {
       if (length > 18) {
-        span.append(text[length]);
+        span?.append(text[length]);
         length++;
       } else {
-        span.before(text[length]);
+        span?.before(text[length]);
         length++;
       }
     }
