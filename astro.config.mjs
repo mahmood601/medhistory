@@ -67,7 +67,7 @@ export default defineConfig({
        */
       modernPolyfills: true
     })],
-  output: "server",
+  output: "hybrid",
   adapter: vercel({
     imageService: true
   }),
