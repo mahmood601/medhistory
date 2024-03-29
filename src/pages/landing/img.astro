@@ -1,14 +1,13 @@
 ---
 import { Image } from "astro:assets";
 const { classes, src, alt } = Astro.props;
-export const prerender = false;
 ---
 
 <Image
-  class={classes + "relative img animate-[rotationTwo_6s_infinite_linear]"}
+  class={classes + "relative img animate-[rotationTwo_6s_infinite_linear] bg-white"}
   src={src}
   quality="low"
-  loading="eager"
+  loading="lazy"
   alt={alt}
 />
 
