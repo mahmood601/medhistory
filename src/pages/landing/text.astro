@@ -47,8 +47,8 @@
       clearTimeout(counter);
     }
   }
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("astro:page-load", () => {
   writer();
-
-  })
+  }, {once: true})
 </script>
+
