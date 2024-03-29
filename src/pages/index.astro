@@ -1,11 +1,13 @@
 ---
 import Landing from "./landing/landing.astro";
+import {ViewTransitions} from "astro:transitions";
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <title>Medhistory</title>
+    <ViewTransitions />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
@@ -20,6 +22,6 @@ import Landing from "./landing/landing.astro";
     <link rel="icon" href="/favicon.ico" />
   </head>
   <body>
-    {false? (<Landing />) : ""}
+    {true? (<Landing />) : ""}
   </body>
 </html>
