@@ -60,8 +60,16 @@
 
 .historical-person,
 .historical-box {
-  will-change: auto;
+  will-change: contents;
+  transition: .8s;
+}
+
+.historical-person {
   animation-delay: 3s;
+}
+
+.historical-box {
+  animation-delay: 3000ms;
 }
 
 @media (min-width: 767px) {
@@ -115,21 +123,21 @@
 @media (max-width: 767px) {
   @keyframes rotationOne {
     from {
-      transform: rotateZ(0deg);
+      transform: rotate(0deg);
     }
 
     to {
-      transform: rotateZ(360deg);
+      transform: rotate(360deg);
     }
   }
 
   @keyframes rotationTwo {
     from {
-      transform: rotateZ(360deg);
+      transform: rotate(360deg);
     }
 
     to {
-      transform: rotateZ(0deg);
+      transform: rotate(0deg);
     }
   }
 }
@@ -147,16 +155,8 @@
 [data-aos="stretchHight"] {
   height: 0;
   transition-property: all;
+}
 
-  &.aos-animate {
-    height: 100%;
-  }
-
-  /* @media screen and (min-width: 768px) { */
-  /*   transform: translateX(100px); */
-  /**/
-  /*   &.aos-animate { */
-  /*     transform: translateX(0); */
-  /*   } */
-  /* } */
+[data-aos="stretchHight"].aos-animate {
+  height: 100%;
 }

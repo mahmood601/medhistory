@@ -1,9 +1,3 @@
-import automation from "/images/Landing/automation-4p-svgrepo-com.svg";
-import story from "/images/Landing/book-svgrepo-com.svg";
-import theme from "/images/Landing/theme-store-svgrepo-com.svg";
-import collaboration from "/images/Landing/collaboration-distributed.svg";
-import ranking from "/images/Landing/ranking-svgrepo-com.svg";
-import link from "/images/Landing/chain-for-links-svgrepo-com.svg";
 import { createEffect, For, onMount } from "solid-js";
 import AOS from 'aos'
 import "aos/dist/aos.css";
