@@ -1,24 +1,21 @@
+import { A } from "@solidjs/router";
 import { createSignal, For, onMount } from "solid-js";
-import firstImage from "/images/Landing/IMG_20240228_213908_238.jpg";
-import secondImage from "/images/Landing/IMG_20240228_213914_405.jpg";
-import thirdImage from "/images/Landing/IMG_20240228_213920_203.jpg";
-import fourthImage from "/images/Landing/IMG_20240228_213942_107.jpg";
 
 const images = [
   {
-    src: "/images/Landing/IMG_20240228_213908_238.jpg",
+    src: "/landing/IMG_20240228_213908_238.webp",
     alt: "first image"
   },
   {
-    src: "/images/Landing/IMG_20240228_213914_405.jpg",
+    src: "/landing/IMG_20240228_213914_405.webp",
     alt: "second image"
   },
   {
-    src: "/images/Landing/IMG_20240228_213920_203.jpg",
+    src: "/landing/IMG_20240228_213920_203.webp",
     alt: "third image"
   },
   {
-    src: "/images/Landing/IMG_20240228_213942_107.jpg",
+    src: "/landing/IMG_20240228_213942_107.webp",
     alt: "fourth image"
   },
 
@@ -33,9 +30,8 @@ export default function Intro() {
       <div
         class="w-full flex justify-around top-7 left-1/2 relative -translate-x-1/2 -translate-y-1/2"
       >
-        <button type="button" class="btn bg-white outline-none">نسخة مدفوعة</button>
-        <button type="button" class="btn bg-brown text-gray-100 outline-none"
-        >نسخة مجانية</button
+        <A href="/app/" class="rtl px-4 font-bold text-lg btn bg-brown text-gray-100 outline-none shadow-current"
+        >انطلق</A
         >
       </div>
       <div
@@ -43,7 +39,7 @@ export default function Intro() {
       >
         <Circle />
       </div>
-    </div>
+    </div >
 
   )
 }
@@ -80,7 +76,7 @@ function Text() {
       <p
         dir="rtl"
         id="landing-text"
-        class="h-[180px] w-[185px] text-3xl font-sans font-bold text-center leading-loose"
+        class="h-[200px] w-[300px] text-4xl font-sans font-bold text-center leading-loose"
       >
         {arText()}
         <span id="span" dir="ltr" class="text-brown inline-block">{enText()}</span>

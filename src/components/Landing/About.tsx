@@ -1,13 +1,11 @@
-const Ali = "/images/Landing/mahmood_ali.jpg";
-const Kader = "/images/Landing/mahmood_abd_alkader.jpg";
 
 export default function About() {
   return (
     <div id="about" class="w-full px-15 text-center my-10">
       <h2 class="text-5xl font-extrabold text-gray-500 my-10">من نحن</h2>
       <div class="flex flex-wrap md:justify-around">
-        <Person src={Ali} alt="Mahmood Ali" name="محمود طه علي" description="شرح بسيط وموجز" />
-        <Person src={Kader} alt="Mahmood Abd Alkader" name="محمود عبد القادر" description="شرح بسيط وموجز" />
+        <Person src="/landing/mahmood_ali.webp" alt="Mahmood Ali" name="محمود طه علي" description="شرح بسيط وموجز" />
+        <Person src="/landing/mahmood_abd_alkader.webp" alt="Mahmood Abd Alkader" name="محمود عبد القادر" description="شرح بسيط وموجز" />
       </div>
     </div >
   )

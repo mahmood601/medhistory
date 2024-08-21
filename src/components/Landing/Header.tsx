@@ -1,4 +1,5 @@
-import { createSignal, onMount, Setter } from 'solid-js'
+import { createSignal, onCleanup, onMount, Setter } from 'solid-js'
+import { isServer } from "solid-js/web";
 import './Landing.css'
 
 declare module "solid-js" {
@@ -21,7 +22,7 @@ export default function Header() {
       <img
         class="aspect-square mt-1"
         loading="eager"
-        src="/images/Landing/Logo.jpg"
+        src="/landing/Logo.jpg"
         alt="Logo"
         height={50}
         width={50}
@@ -44,13 +45,17 @@ export default function Header() {
 }
 
 function Links(props: { ulRef: HTMLUListElement, setOpen: Setter<boolean> }) {
-  onMount(() => {
-    document.addEventListener('click', (e: MouseEvent) => {
-      if (!props.ulRef.contains(e.target as Node)) {
-        props.setOpen(false)
-      }
+  const handleClick = (e: MouseEvent) => {
+    if (!props.ulRef.contains(e.target as Node)) {
+      props.setOpen(false)
+    }
+  }
+  if (!isServer) {
+    document.addEventListener('click', handleClick)
+    onCleanup(() => {
+      document.removeEventListener('click', handleClick)
     })
-  })
+  }
 
   return (
     <li

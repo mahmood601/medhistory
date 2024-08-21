@@ -6,7 +6,7 @@
   }
 
   .btn {
-    @apply p-3 rounded-full shadow-md shadow-gray-300;
+    @apply py-3 rounded-full shadow-sm shadow-brown;
   }
 
   .feat-image {

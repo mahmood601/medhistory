@@ -4,37 +4,37 @@ import "aos/dist/aos.css";
 
 const features = [
   {
-    src: "/images/Landing/automation-4p-svgrepo-com.svg",
+    src: "/landing/automation-4p-svgrepo-com.svg?raw",
     alt: 'Automation',
     title: 'أسئلة مؤتمتة',
     description: 'مجموعة من الاختبارات المؤتمتة للتأكد من الفهم.',
   },
   {
-    src: "/images/Landing/book-svgrepo-com.svg",
+    src: "/landing/book-svgrepo-com.svg?raw",
     alt: 'Story',
     title: 'قصص',
     description: 'قصص مبتكرة لتسهيل حفظ الفقرات.',
   },
   {
-    src: "/images/Landing/theme-store-svgrepo-com.svg",
+    src: "/landing/theme-store-svgrepo-com.svg?raw",
     alt: 'Theme',
     title: 'تغيير الثيم',
     description: 'بإمكانك بسهولة التبديل بين الوضع المضيء والمظلم.',
   },
   {
-    src: "/images/Landing/collaboration-distributed.svg",
+    src: "/landing/collaboration-distributed.svg?raw",
     alt: 'Collaboration',
     title: 'المساهمة',
     description: 'ساهم بإضافة قصتك الخاصة أو مساهمتك بعد الحصول على تصويت.',
   },
   {
-    src: "/images/Landing/ranking-svgrepo-com.svg",
+    src: "/landing/ranking-svgrepo-com.svg?raw",
     alt: 'Ranking',
     title: 'الحصول على ترتيب',
     description: 'تنافس مع زملائك للحصول على المرتبة الأولى.',
   },
   {
-    src: "/images/Landing/chain-for-links-svgrepo-com.svg",
+    src: "/landing/chain-for-links-svgrepo-com.svg?raw",
     alt: 'Link',
     title: 'روابط التوسع',
     description: 'روابط خارجية لشرح الكلمات المبهمة أو فيديوهات توفر شرحاً للفكرة.',
