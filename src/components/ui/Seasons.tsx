@@ -37,7 +37,7 @@ function Season(props: { tailwindBgColor?: string, seasonNum: string, seasonName
       <div class="mr-2 h-full w-20 flex justify-center items-center">
         <div
           style={{
-            "background": `conic-gradient(purple ${props.completedSSNum / props.subSeasonNum}turn, #eee 0deg)`
+            "background": `conic-gradient(#693800 ${props.completedSSNum / props.subSeasonNum}turn, #eee 0deg)`
           }}
           class="w-20 h-20 rounded-full flex justify-center items-center">
           <div class="progress bg-white rounded-full flex justify-center items-center">
