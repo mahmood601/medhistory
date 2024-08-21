@@ -25,7 +25,7 @@ export default function SubSeasons(props: { seasonNum: any }) {
 function SubSeason(props: { name: string }) {
   return (
     <div class="text-right  p-5 border-[1px] rounded-md border-gray-400">
-      <p class="font-bold md:text-2xl lg:text-3xl text-nowrap text-xl">المبحث {props.name}</p>
+      <p class="font-bold w-full md:text-2xl lg:text-3xl text-nowrap text-xl">المبحث {props.name}</p>
     </div>
   )
 }
