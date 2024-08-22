@@ -1,19 +1,18 @@
 import { Line } from "solid-chartjs";
 import { getSeasonData } from "~/lib/seasons";
-import { Chart, Title, Tooltip, Legend } from 'chart.js'
-import { createSignal, onMount } from 'solid-js'
+import { Chart, Tooltip } from 'chart.js'
+import { createEffect, createSignal, onMount } from 'solid-js'
 
 export default function ChartComponent() {
   const [canvasRef, setCanvasRef] = createSignal()
 
-
   onMount(() => {
-    Chart.register(Title, Tooltip, Legend)
+    Chart.register(Tooltip)
   })
 
   return (
     <div class="w-screen h-1/3 flex justify-center">
-      <div class="relative top-4 w-5/6 h-full rounded-md shadow-gray-500 shadow-md p-3 overflow-x-scroll ">
+      <div class="relative top-4 w-5/6 h-full rounded-md shadow-gray-500 dark:shadow-none dark:bg-[#888] shadow-md p-3 overflow-x-scroll ">
         <div class="flex w-[300vw] md:w-full h-full">
           <Line
             ref={setCanvasRef}
@@ -39,10 +38,11 @@ export default function ChartComponent() {
               responsive: true,
               maintainAspectRatio: false,
               plugins: {
-                colors: {
-                  forceOverride: true,
+                tooltip: {
+                  displayColors: false,
+                  padding: 15,
                 }
-              }
+              },
 
             }}
             data={getSeasonData()}
@@ -56,7 +56,7 @@ export default function ChartComponent() {
 const fallback = () => <p>الرسم غير متاح حالياً</p>
 
 const customPointCanvas = function (options: { pointRadius: number, backgroundColor: string, borderColor: string }) {
-  const cvs = document.createElement('canvas'),
+  const cvs = document.createElement('canvas') as HTMLCanvasElement,
     ctx = cvs.getContext('2d'),
     radius = options.pointRadius || 5;
   cvs.height = 2 * radius;

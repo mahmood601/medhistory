@@ -468,13 +468,13 @@ export const getSeasonData = (): ChartData => {
 
   const datasets = [{
     data: seasonArray,
+    pointRadius: 10,
     borderColor: "#693800",
     tension: 0.3,
     label: 'مستوى الصعوبة',
-    pointRadius: 10,
-
+    fill: true,
+    backgroundColor: 'green',
   }];
-  console.log(datasets);
 
 
   return { labels, datasets };
