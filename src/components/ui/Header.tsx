@@ -1,9 +1,11 @@
-import { createEffect, For, onCleanup, onMount, Setter } from "solid-js";
+import { For, onCleanup, onMount, Setter } from "solid-js";
 import { createSignal } from "solid-js";
 import { Transition } from "solid-transition-group";
 import AppName from "./AppName";
 import SearchBox from "./SearchBox";
 import ThemeBtn from "./ThemeBtn";
+import { cache, createAsync, redirect } from "@solidjs/router";
+import { getLoggedInUser } from "~/lib/server/appwrite";
 let links = [
   {
     name: 'الحساب',
@@ -40,10 +42,24 @@ declare module "solid-js" {
   }
 }
 
+
+const user = cache(async () => {
+  "use server"
+  const isLoggedIn = await getLoggedInUser()
+
+  if (!isLoggedIn) {
+    throw redirect("/login")
+  }
+
+}, "user login")
+
+
 export default function Header() {
   const [open, setOpen] = createSignal(false)
   const [search, setSearch] = createSignal(false)
   let menuRef!: HTMLDivElement;
+
+  createAsync(async () => user())
 
   return (
     <header class="z-10 sticky h-20 bg-white dark:bg-header  top-0 py-4 px-5 flex justify-between items-center shadow-gray-400 dark:shadow-dark-hover shadow-sm">
