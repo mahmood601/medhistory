@@ -1,5 +1,5 @@
-import { A } from "@solidjs/router";
 import { createSignal, For, onMount } from "solid-js";
+import { goOrSignin } from "~/lib/server/LandingAction";
 
 const images = [
   {
@@ -30,9 +30,12 @@ export default function Intro() {
       <div
         class="w-full flex justify-around top-7 left-1/2 relative -translate-x-1/2 -translate-y-1/2"
       >
-        <A href="/app/" class="rtl px-4 font-bold text-lg btn bg-brown text-gray-100 outline-none shadow-current"
-        >انطلق</A
-        >
+        <form action={goOrSignin} method="post">
+          <button
+            type="submit"
+            class="rtl px-4 font-bold text-lg btn bg-brown text-gray-100 outline-none shadow-current"
+          >انطلق</button>
+        </form>
       </div>
       <div
         class="w-full h-dvh mt-10 flex justify-center items-center overflow-hidden"
@@ -51,10 +54,7 @@ function Text() {
   const [arText, setArText] = createSignal("")
   const [enText, setEnText] = createSignal("")
 
-
-
   let i = 0
-
 
   onMount(() => {
     const typing = setInterval(() => {

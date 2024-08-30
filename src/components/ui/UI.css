@@ -165,3 +165,31 @@
   opacity: 1;
   transform: translateY(5px);
 }
+
+.login-bar {
+  @apply flex h-px flex-1 bg-white
+}
+
+@keyframes blink {
+  0% {
+    height: 0;
+  }
+
+  30% {
+    height: 0;
+  }
+
+
+  50% {
+    height: 100%;
+  }
+
+  70% {
+    height: 0;
+  }
+
+
+  100% {
+    height: 0;
+  }
+}

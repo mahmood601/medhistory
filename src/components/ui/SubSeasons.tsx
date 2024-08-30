@@ -1,11 +1,9 @@
-import { For } from "solid-js";
+import { For, onMount } from "solid-js";
 import Layout from "~/components/ui/Layout";
 import { seasonsByNums } from "~/lib/seasons";
 
 export default function SubSeasons(props: { seasonNum: any }) {
-
   const currentSeason = seasonsByNums[props.seasonNum - 1]
-
   return (
     <>
       <Layout seasonNum={props.seasonNum}>
