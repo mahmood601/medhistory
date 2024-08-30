@@ -10,6 +10,20 @@ import { loginWithGithub, loginWithGoogle } from '~/lib/server/oauth';
 export default function Login() {
   createAsync(async () => user("/app"))
   onMount(() => {
+    console.log(
+      "api key: ",
+      import.meta.env.VITE_APPWRITE_API_KEY,
+      "\n",
+      "endpoint: ",
+      import.meta.env.VITE_APPWRITE_ENDPOINT,
+      "\n",
+      "project: ",
+      import.meta.env.VITE_APPWRITE_PROJECT,
+      "\n",
+      "site origin: ",
+      import.meta.env.VITE_SITE_ORIGIN,
+      "\n",
+    )
     document.body.classList.add('bg-brown/80')
     onCleanup(() => {
       document.body.classList.remove('bg-brown/80')
