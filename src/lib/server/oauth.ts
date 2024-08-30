@@ -2,7 +2,7 @@ import { createAdminClient } from "./appwrite";
 import { OAuthProvider } from "node-appwrite";
 import { action, redirect } from "@solidjs/router";
 
-const origin = import.meta.env.DEV ? "http://localhost:3000" : import.meta.env.VITE_SITE_ORIGIN
+export const origin = import.meta.env.DEV ? "http://localhost:3000" : import.meta.env.VITE_SITE_ORIGIN
 
 export const loginWithGoogle = action(async () => {
   "use server"

@@ -24,5 +24,5 @@ export async function GET(event: HTTPEvent) {
     console.log("error", e);
   }
 
-  return Response.redirect(`http://localhost:3000/app`)
+  return Response.redirect(`${origin}/app`)
 }
