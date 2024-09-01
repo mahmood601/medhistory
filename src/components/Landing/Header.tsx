@@ -22,7 +22,7 @@ export default function Header() {
       <img
         class="aspect-square mt-1"
         loading="eager"
-        src="/landing/Logo.jpg"
+        src="/landing/Logo.webp"
         alt="Logo"
         height={50}
         width={50}

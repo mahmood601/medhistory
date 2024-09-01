@@ -2,10 +2,10 @@ import { A } from "@solidjs/router"
 import { For } from "solid-js"
 
 const seasonsProps = [
-  { id: 1, seasonNum: "الأول", seasonName: "تاريخ العصور الوسطى", subSeasonNum: 5 },
-  { id: 2, seasonNum: "الثاني", seasonName: "تاريخ العصور الوسطى", subSeasonNum: 5 },
+  { id: 1, seasonNum: "الأول", seasonName: "تاريخ العصور الوسطى", subSeasonNum: 8 },
+  { id: 2, seasonNum: "الثاني", seasonName: "تاريخ العصور الوسطى", subSeasonNum: 9 },
   { id: 3, seasonNum: "الثالث", seasonName: "تاريخ العصور الوسطى", subSeasonNum: 5 },
-  { id: 4, seasonNum: "الرابع", seasonName: "تاريخ العصور الوسطى", subSeasonNum: 5 },
+  { id: 4, seasonNum: "الرابع", seasonName: "تاريخ العصور الوسطى", subSeasonNum: 13 },
   { id: 5, seasonNum: "الخامس", seasonName: "تاريخ العصور الوسطى", subSeasonNum: 5 }
 ]
 

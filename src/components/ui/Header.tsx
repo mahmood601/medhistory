@@ -48,7 +48,7 @@ const user = cache(async () => {
   const isLoggedIn = await getLoggedInUser()
 
   if (!isLoggedIn) {
-    throw redirect("/login")
+    // throw redirect("/login")
   }
 
 }, "user login")
