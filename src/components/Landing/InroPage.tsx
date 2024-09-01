@@ -3,19 +3,19 @@ import { goOrSignin } from "~/lib/server/LandingAction";
 
 const images = [
   {
-    src: "/landing/IMG_20240228_213908_238.webp",
+    src: "/landing/landing-1.webp",
     alt: "first image"
   },
   {
-    src: "/landing/IMG_20240228_213914_405.webp",
+    src: "/landing/landing-2.webp",
     alt: "second image"
   },
   {
-    src: "/landing/IMG_20240228_213920_203.webp",
+    src: "/landing/landing-3.webp",
     alt: "third image"
   },
   {
-    src: "/landing/IMG_20240228_213942_107.webp",
+    src: "/landing/landing-4.webp",
     alt: "fourth image"
   },
 
