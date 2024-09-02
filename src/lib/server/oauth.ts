@@ -33,7 +33,6 @@ export const loginWithGithub = action(async () => {
       ["user"]
     )
 
-    console.log(redirectURL);
 
 
     return redirect(`${redirectURL}`)
@@ -41,3 +40,10 @@ export const loginWithGithub = action(async () => {
     console.log(error)
   }
 }, "signinGithub")
+
+export function getMaxAgeInMilliseconds(expireDateIso: string): number {
+  const now = new Date().getTime()
+  const expireDate = new Date(expireDateIso).getTime()
+  const difference = expireDate - now;
+  return difference;
+}

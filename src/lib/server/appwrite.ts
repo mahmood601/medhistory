@@ -30,7 +30,6 @@ export async function createSessionClient() {
   }
 
   client.setSession(session);
-  console.log(client);
 
   return {
     get account() {

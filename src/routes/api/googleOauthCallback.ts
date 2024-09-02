@@ -1,5 +1,6 @@
 import { getRequestURL, HTTPEvent, setCookie } from "vinxi/http"
 import { createAdminClient } from "~/lib/server/appwrite"
+import { getMaxAgeInMilliseconds } from "~/lib/server/oauth";
 
 export async function GET(event: HTTPEvent) {
   "use server"
@@ -16,7 +17,7 @@ export async function GET(event: HTTPEvent) {
       path: '/',
       httpOnly: true,
       sameSite: "strict",
-      maxAge: session.expire as any,
+      maxAge: getMaxAgeInMilliseconds(session.expire),
       secure: true,
     })
   }

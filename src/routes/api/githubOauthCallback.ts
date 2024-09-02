@@ -1,11 +1,12 @@
-import { getRequestHost, getRequestURL, HTTPEvent, setCookie } from "vinxi/http"
+import { getRequestURL, HTTPEvent, setCookie } from "vinxi/http"
 import { createAdminClient } from "~/lib/server/appwrite"
+import { getMaxAgeInMilliseconds } from "~/lib/server/oauth";
 
 export async function GET(event: HTTPEvent) {
   "use server"
   const url = getRequestURL(event)
   const userId = url.searchParams.get("userId") as string;
-  const secret = url.searchParams.get("secret") as string
+  const secret = url.searchParams.get("secret") as string;
 
   try {
 
@@ -16,7 +17,7 @@ export async function GET(event: HTTPEvent) {
       path: '/',
       httpOnly: true,
       sameSite: "strict",
-      maxAge: session.expire as any,
+      maxAge: getMaxAgeInMilliseconds(session.expire),
       secure: true,
     })
   }
@@ -26,3 +27,5 @@ export async function GET(event: HTTPEvent) {
 
   return Response.redirect(`${url.origin}/app`)
 }
+
+
