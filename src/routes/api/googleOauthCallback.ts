@@ -16,6 +16,7 @@ export async function GET(event: HTTPEvent) {
       path: '/',
       httpOnly: true,
       sameSite: "strict",
+      maxAge: session.expire as any,
       secure: true,
     })
   }
