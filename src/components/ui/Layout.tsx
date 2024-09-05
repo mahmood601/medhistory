@@ -1,7 +1,7 @@
-import { JSX, onMount } from "solid-js";
+import { JSX } from "solid-js";
 import Header from "./Header";
 import "./UI.css"
-import { A, useNavigate } from "@solidjs/router";
+import { A } from "@solidjs/router";
 
 export default function Layout(props: { seasonNum: any, children: JSX.Element }) {
 

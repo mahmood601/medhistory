@@ -62,7 +62,7 @@ export default function Header() {
   createAsync(async () => user())
 
   return (
-    <header class="z-10 sticky h-20 bg-white dark:bg-header  top-0 py-4 px-5 flex justify-between items-center shadow-gray-400 dark:shadow-dark-hover shadow-sm">
+    <header class="z-50 sticky h-20 bg-white dark:bg-header  top-0 py-4 px-5 flex justify-between items-center shadow-gray-400 dark:shadow-dark-hover shadow-sm">
       <nav>
         <div
           class={`${open() ? 'open' : ''} relative`}
