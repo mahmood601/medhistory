@@ -43,7 +43,7 @@ declare module "solid-js" {
 }
 
 
-const user = cache(async () => {
+const user = async () => {
   "use server"
   const isLoggedIn = await getLoggedInUser()
 
@@ -51,7 +51,8 @@ const user = cache(async () => {
     throw redirect("/login")
   }
 
-}, "user login")
+}
+
 
 
 export default function Header() {
@@ -59,7 +60,18 @@ export default function Header() {
   const [search, setSearch] = createSignal(false)
   let menuRef!: HTMLDivElement;
 
-  createAsync(async () => user())
+  createAsync(async () => {
+    try {
+      const userData = await user()
+      // Use the user data here
+    } catch (error) {
+      if (error instanceof redirect) {
+        // Handle the redirect exception
+      } else {
+        console.error("Error fetching user data", error)
+      }
+    }
+  }, { deferStream: true })
 
   return (
     <header class="z-50 sticky h-20 bg-white dark:bg-header  top-0 py-4 px-5 flex justify-between items-center shadow-gray-400 dark:shadow-dark-hover shadow-sm">

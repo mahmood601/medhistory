@@ -8,7 +8,7 @@ import { loginWithGithub, loginWithGoogle } from '~/lib/server/oauth';
 
 
 export default function Login() {
-  createAsync(async () => user("/app"))
+  createAsync(async () => await user("/app"))
   onMount(() => {
     document.body.classList.add('bg-brown/80')
     onCleanup(() => {

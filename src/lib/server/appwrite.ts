@@ -1,6 +1,6 @@
 import { cache, redirect } from "@solidjs/router";
 import { Client, Account } from "node-appwrite";
-import { getCookie, HTTPEvent } from "vinxi/http";
+import { getCookie } from "vinxi/http";
 
 export async function createAdminClient() {
   const client = new Client()
@@ -18,24 +18,29 @@ export async function createAdminClient() {
 export async function createSessionClient() {
   "use server";
 
-  const client = new Client()
-    .setEndpoint(import.meta.env.VITE_APPWRITE_ENDPOINT)
-    .setProject(import.meta.env.VITE_APPWRITE_PROJECT)
+  try {
+    const client = new Client()
+      .setEndpoint(import.meta.env.VITE_APPWRITE_ENDPOINT)
+      .setProject(import.meta.env.VITE_APPWRITE_PROJECT)
 
-  const session = getCookie("medhistory") !== undefined ? getCookie('medhistory') : null; // Also this as SESSION_COOKIE
+    const session = getCookie("medhistory") !== undefined ? getCookie('medhistory') : null; // Also this as SESSION_COOKIE
 
 
-  if (!session) {
-    throw new Error("No user session")
+    if (!session) {
+      throw new Error("No user session")
+    }
+
+    client.setSession(session);
+
+    return {
+      get account() {
+        return new Account(client);
+      },
+    }
   }
-
-  client.setSession(session);
-
-  return {
-    get account() {
-      return new Account(client);
-    },
-  };
+  catch (error) {
+    throw redirect("/login")
+  }
 }
 
 export async function getLoggedInUser() {

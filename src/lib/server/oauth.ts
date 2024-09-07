@@ -4,46 +4,25 @@ import { action, redirect } from "@solidjs/router";
 
 export const origin = import.meta.env.DEV ? "http://localhost:3000" : import.meta.env.VITE_SITE_ORIGIN
 
-export const loginWithGoogle = action(async () => {
-  "use server"
 
-  const { account } = await createAdminClient()
+const loginWithOAuth = async (provider: OAuthProvider, scopes: string[]) => {
+  "use server";
   try {
+    const { account } = await createAdminClient()
     const redirectURL = await account.createOAuth2Token(
-      OAuthProvider.Google,
-      `${origin}/api/googleOauthCallback`,
+      provider,
+      `${origin}/api/oauthCallback`,
       `${origin}/login`,
-      ["openid", "profile", "email"]
+      scopes
     )
 
     return redirect(`${redirectURL}`)
   } catch (error) {
-    console.log(error)
+    console.error("Error creating OAuth token", error)
+    return { error: "Failed to create OAuth token" }
   }
-}, "signinGoogle")
-
-export const loginWithGithub = action(async () => {
-  "use server"
-  const { account } = await createAdminClient()
-  try {
-    const redirectURL = await account.createOAuth2Token(
-      OAuthProvider.Github,
-      `${origin}/api/githubOauthCallback`,
-      `${origin}/login`,
-      ["user"]
-    )
-
-
-
-    return redirect(`${redirectURL}`)
-  } catch (error) {
-    console.log(error)
-  }
-}, "signinGithub")
-
-export function getMaxAgeInMilliseconds(expireDateIso: string): number {
-  const now = new Date().getTime()
-  const expireDate = new Date(expireDateIso).getTime()
-  const difference = expireDate - now;
-  return difference;
 }
+
+export const loginWithGoogle = action(async () => await loginWithOAuth(OAuthProvider.Google, ["openid", "profile", "email"]), "signinGoogle")
+
+export const loginWithGithub = action(async () => await loginWithOAuth(OAuthProvider.Github, ["user"]), "signinGithub")
