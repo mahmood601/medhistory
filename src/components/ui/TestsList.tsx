@@ -48,6 +48,9 @@ let checkboxRef!: any;
 function Test(props: TestProps) {
   const testIndex = 2; // remove it with api
   const [answer, setAnswer] = createSignal({ state: false, index: -1 })
+  const beat = "/music/heartbeat.mp3"
+  const beep = "/music/heartbeep.mp3"
+  let checkboxAudio = null
 
 
   return (
@@ -70,8 +73,13 @@ function Test(props: TestProps) {
                       shapes: ["star", "roundedSquare"],
                       spread: 40
                     })
+                    checkboxAudio = new Audio(beat)
 
+                  } else {
+                    checkboxAudio = new Audio(beep)
                   }
+                  checkboxAudio.play()
+
                   setAnswer({ state: true, index: index() })
                 }}
                 class={`${answer().state ? 'pointer-events-none' : ''} flex items-center w-fit`}>
@@ -96,6 +104,8 @@ function Test(props: TestProps) {
 function Checkbox(props: { isAnswered: boolean, correct: boolean | "notChoosen" }) {
   return (
     <div
+      onClick={() => {
+      }}
       class={`${props.correct == "notChoosen" ? 'border-brown' : props.correct ? 'border-green-600' : 'border-red-600 '} relative flex items-center justify-center w-5 h-5 border-2  border-brown rounded-sm`}>
       <span class={`${props.isAnswered ? 'h-1/2' : 'h-0'} ${props.correct == "notChoosen" ? 'bg-brown' : props.correct ? 'bg-green-600' : 'bg-red-600'} h-0 bg-brown absolute transition-all  w-full bottom-0`}></span>
       {props.correct == "notChoosen" ? '' : props.correct ? <Check /> : <Cross />}
