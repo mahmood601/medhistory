@@ -21,7 +21,7 @@ const user = cache(async () => {
 
 
 export default function Landing() {
-  createAsync(async () => user())
+  createAsync(async () => await user(), { deferStream: true })
   return (
     <>
       <Header />

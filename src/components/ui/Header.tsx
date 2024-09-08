@@ -4,12 +4,13 @@ import { Transition } from "solid-transition-group";
 import AppName from "./AppName";
 import SearchBox from "./SearchBox";
 import ThemeBtn from "./ThemeBtn";
-import { cache, createAsync, redirect } from "@solidjs/router";
+import { A, cache, createAsync, redirect } from "@solidjs/router";
 import { getLoggedInUser } from "~/lib/server/appwrite";
 let links = [
   {
     name: 'الحساب',
     image: "account",
+    route: 'profile',
   },
   {
     name: 'وضع الإضاءة',
@@ -18,18 +19,22 @@ let links = [
   {
     name: 'الإعدادات',
     image: "settings",
+    route: 'settings',
   },
   {
     name: 'الترتيب الحالي',
     image: "ranking",
+    route: 'ranking',
   },
   {
     name: 'الإشعارات',
     image: "notification",
+    route: 'notifications',
   },
   {
     name: 'المدونة',
     image: "blog",
+    route: 'blog',
   },
 
 ]
@@ -127,7 +132,11 @@ function Links(props: { menuRef: HTMLDivElement, setOpen: Setter<boolean> }) {
           (link, index) => (
             <li class={`${index() === 1 && 'sun-link'} link relative hover:hovered`}>
               <div class="w-6 h-6 flex justify-center">
-                {index() === 1 ? (<ThemeBtn />) : (< img class="dark:invert" src={`/app/${link.image}.svg`} alt={link.name} />)}
+                {index() === 1 ? (<ThemeBtn />) : (
+                  <A href={`/${link.route}`}>
+                    < img class="dark:invert" src={`/app/${link.image}.svg`} alt={link.name} />
+                  </A>
+                )}
               </div>
               <p style={{ 'animation-delay': `${(index() + 1) * 0.5}s` }}
                 class="hint hint-hovered dark:shadow-white dark:text-white dark:shadow-md dark:bg-[#444] pointer-events-none opacity-0 transition-all will-change-auto duration-400 rtl p-[6px] rounded-r-full  absolute top-1/2 -translate-y-1/2 left-full bg-white w-max">{link.name}</p>

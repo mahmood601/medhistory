@@ -6,8 +6,11 @@ module.exports = {
     extend: {
       colors: {
         'brown': '#693800',
+
+        // Dark colors
+        'header': '#191919',
         'dark-hover': '#444',
-        'header': '#191919'
+
       }
     }
   },

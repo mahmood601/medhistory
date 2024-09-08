@@ -1,15 +1,8 @@
-import Signin from "../../components/ui/Login"
-import { redirect } from '@solidjs/router';
-import { createResource, Suspense } from "solid-js";
-import { getLoggedInUser } from '~/lib/server/appwrite';
-
-
-
-
+import Login from "../../components/ui/Login"
 
 export default function LoginPage() {
   return (
-    <Signin />
+    <Login />
   )
 }
 
