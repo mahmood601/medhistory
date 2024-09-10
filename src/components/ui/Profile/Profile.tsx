@@ -4,7 +4,7 @@ import ProfileInfo from "./ProfileInfo";
 
 export default function Profile() {
   return (
-    <div class="w-screen h-screen dark:bg-black">
+    <div class="w-screen min-h-screen dark:bg-black">
       <Header sectionName="الملف الشخصي" />
       <Image />
       <ProfileInfo />

@@ -1,4 +1,4 @@
-import { createSignal, For, Show } from "solid-js"
+import { createSignal, For, onMount, Show } from "solid-js"
 import party from "party-js"
 
 type TestProps = {
@@ -33,25 +33,70 @@ const questions = [
 ]
 
 export default function TestsList() {
+  const [openTestMenu, setOepnTestMenu] = createSignal(false)
+  let TestMenuRef!: HTMLUListElement
+
+  const handleClick = (e: MouseEvent) => {
+    if (!TestMenuRef.contains(e.target as Node)) {
+      setOepnTestMenu(false)
+    }
+  }
+
+  onMount(() => {
+    document.addEventListener("click", handleClick)
+  })
+
   return (
-    <div class="p-5 flex flex-col items-center gap-5 dark:bg-black dark:text-white text-lg">
-      <For each={questions}>
-        {
-          question => <Test question={question.question} options={question.options} answerId={question.answerId} />
-        }
-      </For>
-    </div>
+    <>
+      <div class="bg-[#222] z-40 fixed h-16 w-full flex flex-row-reverse justify-between py-2 px-8 items-center">
+        <ul
+          ref={TestMenuRef}
+          on:click={(e) => {
+            e.stopPropagation()
+            setOepnTestMenu(!openTestMenu())
+          }}
+          class="relative flex h-8 flex-col items-center justify-around">
+          <li class="w-[5px] h-[5px] bg-white rounded-full"></li>
+          <li class="w-[5px] h-[5px] bg-white rounded-full"></li>
+          <li class="w-[5px] h-[5px] bg-white rounded-full"></li>
+          <Show when={openTestMenu()}>
+            <li class="absolute -right-4 top-full translate-y-6">
+              <ul dir="rtl" class="bg-white dark:bg-[#444] dark:text-white text-right w-32 rounded-md">
+                <li class="w-full p-2 border-b-2 border-b-gray-400">تعطيل المؤقت</li>
+                <li class="w-full p-2 border-b-2 border-b-gray-400">تشغيل المؤقت</li>
+                <li class="w-full p-2 border-b-2 border-b-gray-400">تصفير المؤقت</li>
+                <li class="w-full p-2 ">تصفير الإجابات</li>
+              </ul>
+            </li>
+          </Show>
+        </ul>
+        <p class="text-black dark:text-white font-bold">00:00</p>
+        <p class="text-black diagonal-fractions dark:text-white font-bold text-2xl">0/20</p>
+      </div>
+      <div class="p-5 mt-16 flex flex-col items-center gap-5 dark:bg-black dark:text-white text-lg">
+        <For each={questions}>
+          {
+            question => <Test question={question.question} options={question.options} answerId={question.answerId} />
+          }
+        </For>
+      </div>
+    </>
   )
 }
+
 let checkboxRef!: any;
+let audio: HTMLMediaElement | any
 
 function Test(props: TestProps) {
   const testIndex = 2; // remove it with api
   const [answer, setAnswer] = createSignal({ state: false, index: -1 })
+
   const beat = "/music/heartbeat.mp3"
   const beep = "/music/heartbeep.mp3"
-  let checkboxAudio = null
 
+  onMount(() => {
+    audio = new Audio()
+  })
 
   return (
     <div dir="rtl" class="bg-gray-300 dark:bg-[#222] p-5 w-full rounded-md">
@@ -66,6 +111,10 @@ function Test(props: TestProps) {
               <li
                 onClick={(e) => {
                   e.stopPropagation()
+
+
+                  audio.pause()
+
                   if (index() === testIndex) {
                     checkboxRef = e.currentTarget
                     party.confetti(checkboxRef as HTMLElement, {
@@ -73,12 +122,12 @@ function Test(props: TestProps) {
                       shapes: ["star", "roundedSquare"],
                       spread: 40
                     })
-                    checkboxAudio = new Audio(beat)
+                    audio.src = beat
 
                   } else {
-                    checkboxAudio = new Audio(beep)
+                    audio.src = beep
                   }
-                  checkboxAudio.play()
+                  audio.play()
 
                   setAnswer({ state: true, index: index() })
                 }}
